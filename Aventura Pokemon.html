@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Aventura Pokémon</title>
+        <link rel="shortcut icon"
+            href="images/alfombra-pokeball-pokemon-420x420.jpg">
+        <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        #campo {
+            background-image: url(images/awita.jpg);
+            background-size: cover;
+            background-repeat: repeat;
+            height: 100vh;
+            border: 5px solid rgb(76, 212, 230);
+            padding: 20px;
+            text-align: center;
+        }
+
+        #campo h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #campo h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #stage {
+            position: relative;
+            width: 576px;
+            height: 576px;
+            border-radius: 9px;
+            background: url(images/background.png);
+            margin: 0 auto;
+            border: 5px solid black;
+            margin-bottom: 20px;
+        }
+
+        .cell {
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+        }
+
+        p {
+            width: 400px;
+            margin: 0 auto;
+            border: 3px solid black;
+            padding: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #fff;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="campo">
+            <h1>Aventura Pokémon</h1>
+            <h3>Alfonso, Alex y Zakaria</h3>
+            <div id="stage"></div>
+            <p id="output"></p>
+        </div>
+        <script src="js/aventuraJS.js"></script>
+    </body>
+</html>
