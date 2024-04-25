@@ -54,3 +54,10 @@ p {
     line-height: 1.5;
     background-color: #fff;
 }
+
+button {
+    width: 50px;
+    height: 25px;
+    color: #fff;
+    background-color: rgb(139, 36, 36);
+}
