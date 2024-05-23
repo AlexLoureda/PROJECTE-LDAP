@@ -2,7 +2,9 @@
 // Configuración de conexión LDAP
 $ldap_servidor = "ldap://192.168.10.15";
 $ldap_puerto = 389;
-$ldap_basedn = "dc=dominiaza,dc=com";
+$ldap_basedn = ",ou=usuaris,dc=dominiaza,dc=com";
+
+echo 'hola';
 
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,21 +12,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
+       
+        echo 'hola1';
 
         // Conexión al servidor LDAP
         $ldap_conexion = ldap_connect($ldap_servidor, $ldap_puerto);
         ldap_set_option($ldap_conexion, LDAP_OPT_PROTOCOL_VERSION, 3);
+       
+        echo 'hola2';
 
         if ($ldap_conexion) {
             // Intenta autenticar al usuario
-            $ldap_bind = @ldap_bind($ldap_conexion, "cn=$username,$ldap_basedn", $password);
+            $user_dn = 'cn=' . $username . $ldap_basedn;
+            echo $user_dn;
+            echo $password;
+            $ldap_bind = @ldap_bind($ldap_conexion, $user_dn, $password);
 
             if ($ldap_bind) {
                 // Autenticación exitosa, redirige al usuario a la página de aventura
+                echo "exit";
                 header("Location: ../Aventura.html");
                 exit;
             } else {
                 // Las credenciales son incorrectas, redirige al usuario de nuevo al formulario de inicio de sesión con un mensaje de error
+                echo "fracas";
                 header("Location: ../index.html?error=incorrect_credentials");
                 exit;
             }
